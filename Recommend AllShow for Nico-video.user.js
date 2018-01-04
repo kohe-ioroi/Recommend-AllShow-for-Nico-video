@@ -4,10 +4,28 @@
 // @description    Reccomend Video All Show for Nicovideo.jp
 // @include        http://www.nicovideo.jp/recommendations*
 // ==/UserScript==
-(function(){
-    if(!document.evaluate('//*[@id="next_recommendations"]',document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null ).snapshotLength){
-        return;
-    }else{
-        for (i=0; i<30; i++) {
-            setTimeout(document.getElementById("next_recommendations").click(),100)
-        }}})
+function loopSleep(_loopLimit,_interval, _mainFunc){
+  var loopLimit = _loopLimit;
+  var interval = _interval;
+  var mainFunc = _mainFunc;
+  var i = 0;
+  var loopFunc = function () {
+    var result = mainFunc(i);
+    if (result === false) {
+      // break機能
+      return;
+    }
+    i = i + 1;
+    if (i < loopLimit) {
+      setTimeout(loopFunc, interval);
+    }
+  };
+  loopFunc();
+}
+
+if(!document.evaluate('//*[@id="next_recommendations"]',document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null).snapshotLength)
+{return;
+}else{
+    loopSleep(10, 100, function(i){
+  document.getElementById("next_recommendations").click();
+});}
