@@ -2,7 +2,7 @@
 // @name           Recommend AllShow for Nico-video
 // @namespace      Kohe_Ioroi
 // @description    Reccomend Video All Show for Nicovideo.jp
-// @varsion        0.1
+// @version        0.1
 // @include        http://www.nicovideo.jp/recommendations*
 // ==/UserScript==
 function loopSleep(_loopLimit,_interval, _mainFunc){
