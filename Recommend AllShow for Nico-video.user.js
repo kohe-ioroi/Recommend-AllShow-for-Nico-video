@@ -1,8 +1,8 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name           Recommend AllShow for Nico-video
 // @namespace      Kohe_Ioroi
 // @description    Reccomend Video All Show for Nicovideo.jp
-// @version        0.1
+// @version        0.2
 // @include        http://www.nicovideo.jp/recommendations*
 // ==/UserScript==
 function loopSleep(_loopLimit,_interval, _mainFunc){
@@ -27,6 +27,6 @@ function loopSleep(_loopLimit,_interval, _mainFunc){
 if(!document.evaluate('//*[@id="next_recommendations"]',document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null).snapshotLength)
 {return;
 }else{
-    loopSleep(10, 100, function(i){
+    loopSleep(10, 150, function(i){
   document.getElementById("next_recommendations").click();
 });}
